@@ -6,7 +6,7 @@
 > [Jiaming Sun](https://jiamingsun.ml)<sup>\*</sup>, [Zehong Shen](zehongs.github.io)<sup>\*</sup>, [Yu'ang Wang](https://github.com/angshine)<sup>\*</sup>, [Hujun Bao](http://www.cad.zju.edu.cn/bao/), [Xiaowei Zhou](http://www.cad.zju.edu.cn/home/xzhou/)  
 > CVPR 2021
 
-![demo_vid](https://zju3dv.github.io/neuralbody/images/monocular.gif)
+![demo_vid](assets/loftr-github-demo.gif)
 
 
 <br/>
