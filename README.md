@@ -1,16 +1,21 @@
-# LoFTR: Detector-Free Local Feature Matching with Transformers (WIP)
+# LoFTR: Detector-Free Local Feature Matching with Transformers
 ### [Project Page](https://zju3dv.github.io/loftr) | [Paper (TBD)](https://arxiv.org/pdf/2104.15838.pdf)
+<br/>
 
-> LoFTR: Detector-Free Local Feature Matching with Transformers
-> [Jiaming Sun](https://jiamingsun.ml)<sup>*</sup>, [Zehong Shen](zehongs.github.io)<sup>*</sup>, [Yu'ang Wang](https://github.com/angshine)<sup>*</sup>, [Hujun Bao](http://www.cad.zju.edu.cn/bao/), [Xiaowei Zhou](http://www.cad.zju.edu.cn/home/xzhou/)
+> LoFTR: Detector-Free Local Feature Matching with Transformers  
+> [Jiaming Sun](https://jiamingsun.ml)<sup>\*</sup>, [Zehong Shen](zehongs.github.io)<sup>\*</sup>, [Yu'ang Wang](https://github.com/angshine)<sup>\*</sup>, [Hujun Bao](http://www.cad.zju.edu.cn/bao/), [Xiaowei Zhou](http://www.cad.zju.edu.cn/home/xzhou/)  
 > CVPR 2021
 
-<!-- ![monocular](https://zju3dv.github.io/neuralbody/images/monocular.gif) -->
+![demo_vid](https://zju3dv.github.io/neuralbody/images/monocular.gif)
 
 
 <br/>
 
-We plan to release the code within the next week, stay tuned. In the meanwhile, discussions are welcomed in the [discussion panel](https://github.com/zju3dv/LoFTR/discussions).
+## Code release ETA
+We plan to release the inference-only code and pretrained within the upcoming week, stay tuned. 
+The entire codebase for data pre-processing, training and validation is under major refactoring and will be released around June.
+Please subscribe to [this discussion thread](https://github.com/zju3dv/LoFTR/discussions/2) if you wish to be notified of the code release.
+In the meanwhile, discussions about the paper are welcomed in the [discussion panel](https://github.com/zju3dv/LoFTR/discussions).
 
 
 ## Citation
