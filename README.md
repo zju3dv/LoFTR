@@ -1,5 +1,5 @@
 # LoFTR: Detector-Free Local Feature Matching with Transformers
-### [Project Page](https://zju3dv.github.io/loftr) | [Paper (TBD)](https://arxiv.org/pdf/2104.15838.pdf)
+### [Project Page](https://zju3dv.github.io/loftr) | [Paper](https://arxiv.org/pdf/2104.00680.pdf)
 <br/>
 
 > LoFTR: Detector-Free Local Feature Matching with Transformers  
