@@ -12,7 +12,7 @@
 <br/>
 
 ## Code release ETA
-We plan to release the inference-only code and pretrained within the upcoming week, stay tuned. 
+We plan to release the inference-only code and pretrained model within the upcoming week, stay tuned. 
 The entire codebase for data pre-processing, training and validation is under major refactoring and will be released around June.
 Please subscribe to [this discussion thread](https://github.com/zju3dv/LoFTR/discussions/2) if you wish to be notified of the code release.
 In the meanwhile, discussions about the paper are welcomed in the [discussion panel](https://github.com/zju3dv/LoFTR/discussions).
