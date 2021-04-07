@@ -8,6 +8,15 @@
 
 ![demo_vid](assets/loftr-github-demo.gif)
 
+## TODO List and ETA
+The entire codebase for data pre-processing, training and validation is under major refactoring and will be released around June.
+Please subscribe to [this discussion thread](https://github.com/zju3dv/LoFTR/discussions/2) if you wish to be notified of the code release.
+In the meanwhile, discussions about the paper are welcomed in the [discussion panel](https://github.com/zju3dv/LoFTR/discussions).
+
+- [x] Inference code and pretrained models (OT an DS) (2021-4-7)
+- [x] Code for reproducing the test-set results (2021-4-7)
+- [ ] Webcam demo to reproduce the result shown in the GIF above (expected 2021-4-13)
+- [ ] Training code and training data preparation (expected 2021-6-10)
 
 ## Installation
 ```shell
@@ -29,7 +38,7 @@ By now, the LoFTR-DS model is ready to go!
 <details>
   <summary>[Requirements for LoFTR-OT]</summary>
 
-  We use the code from [SuperGluePretrainedNetwork](https://github.com/magicleap/SuperGluePretrainedNetwork) for optimal transport. However, we can't provide the code directly due to its LICENSE. We recommend downloading it instead. 
+  We use the code from [SuperGluePretrainedNetwork](https://github.com/magicleap/SuperGluePretrainedNetwork) for optimal transport. However, we can't provide the code directly due its strict LICENSE requirements. We recommend downloading it with the following command instead. 
 
   ```shell
   cd src/loftr/utils  
@@ -77,17 +86,10 @@ python test.py configs/data/scannet_test_1500.py configs/loftr/loftr_ds.py --ckp
 
 For visualizing the dump results, please refer to `notebooks/visualize_dump_results.ipynb`.
 
-### Reproduce the training phase with pytorch-lightning
-
-The code is coming soon, stay tuned!
-
 <br/>
 
 
-## Code release ETA
-The entire codebase for data pre-processing, training and validation is under major refactoring and will be released around June.
-Please subscribe to [this discussion thread](https://github.com/zju3dv/LoFTR/discussions/2) if you wish to be notified of the code release.
-In the meanwhile, discussions about the paper are welcomed in the [discussion panel](https://github.com/zju3dv/LoFTR/discussions).
+
 
 
 ## Citation
