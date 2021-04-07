@@ -13,7 +13,7 @@ The entire codebase for data pre-processing, training and validation is under ma
 Please subscribe to [this discussion thread](https://github.com/zju3dv/LoFTR/discussions/2) if you wish to be notified of the code release.
 In the meanwhile, discussions about the paper are welcomed in the [discussion panel](https://github.com/zju3dv/LoFTR/discussions).
 
-- [x] Inference code and pretrained models (OT an DS) (2021-4-7)
+- [x] Inference code and pretrained models (DS and OT) (2021-4-7)
 - [x] Code for reproducing the test-set results (2021-4-7)
 - [ ] Webcam demo to reproduce the result shown in the GIF above (expected 2021-4-13)
 - [ ] Training code and training data preparation (expected 2021-6-10)
