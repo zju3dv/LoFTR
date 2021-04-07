@@ -9,10 +9,82 @@
 ![demo_vid](assets/loftr-github-demo.gif)
 
 
+## Installation
+```shell
+# For full pytorch-lightning trainer features
+conda env create -f environment.yaml
+conda activate loftr
+
+# For the LoFTR matcher only
+pip install torch einops yacs kornia
+```
+
+We provide the [download link](https://drive.google.com/drive/folders/1DOcOPZb3-5cWxLqn256AhwUVjBPifhuf?usp=sharing) to 
+  - the scannet-1500-testset (~1GB).
+  - the megadepth-1500-testset (~600MB).
+  - 4 pretrained models of indoor-ds, indoor-ot, outdoor-ds and outdoor-ot (each ~45MB).
+
+By now, the LoFTR-DS model is ready to go!
+
+<details>
+  <summary>[Requirements for LoFTR-OT]</summary>
+
+  We use the code from [SuperGluePretrainedNetwork](https://github.com/magicleap/SuperGluePretrainedNetwork) for optimal transport. However, we can't provide the code directly due to its LICENSE. We recommend downloading it instead. 
+
+  ```shell
+  cd src/loftr/utils  
+  wget https://raw.githubusercontent.com/magicleap/SuperGluePretrainedNetwork/master/models/superglue.py 
+  ```
+</details>
+
+
+## Run the code
+
+### Match image pairs with LoFTR
+
+<details>
+  <summary>[code snippets]</summary>
+
+  ```python
+  from src.loftr import LoFTR, default_cfg
+
+  # Initialize LoFTR
+  matcher = LoFTR(config=default_cfg)
+  matcher.load_state_dict(torch.load("weights/indoor_ds.ckpt")['state_dict'])
+  matcher = matcher.eval().cuda()
+
+  # Inference
+  with torch.no_grad():
+      matcher(batch)    # batch = {'image0': img0, 'image1': img1}
+      mkpts0 = batch['mkpts0_f'].cpu().numpy()
+      mkpts1 = batch['mkpts1_f'].cpu().numpy()
+  ```
+
+</details>
+
+An example is in the `notebooks/demo_single_pair.ipynb`.
+
+### Reproduce the testing results with pytorch-lightning
+
+```shell
+conda activate loftr
+# with shell script
+bash ./scripts/reproduce_test/indoor_ds.sh
+
+# or
+python test.py configs/data/scannet_test_1500.py configs/loftr/loftr_ds.py --ckpt_path weights/indoor_ds.ckpt --profiler_name inference --gpus=1 --accelerator="ddp"
+```
+
+For visualizing the dump results, please refer to `notebooks/visualize_dump_results.ipynb`.
+
+### Reproduce the training phase with pytorch-lightning
+
+The code is coming soon, stay tuned!
+
 <br/>
 
+
 ## Code release ETA
-We plan to release the inference-only code and pretrained model within the upcoming week, stay tuned. 
 The entire codebase for data pre-processing, training and validation is under major refactoring and will be released around June.
 Please subscribe to [this discussion thread](https://github.com/zju3dv/LoFTR/discussions/2) if you wish to be notified of the code release.
 In the meanwhile, discussions about the paper are welcomed in the [discussion panel](https://github.com/zju3dv/LoFTR/discussions).

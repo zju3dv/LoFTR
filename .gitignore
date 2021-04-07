@@ -1,0 +1,12 @@
+.vscode/
+*.pyc
+*.DS_Store
+*.swp
+*.pth
+tmp.*
+*/.ipynb_checkpoints/*
+
+logs/
+weights/
+dump/
+src/loftr/utils/superglue.py

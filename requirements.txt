@@ -1,0 +1,14 @@
+opencv_python==4.4.0.46
+albumentations==0.5.1 --no-binary=imgaug,albumentations
+ray>=1.0.1
+einops==0.3.0
+kornia==0.4.1
+loguru==0.5.3
+yacs>=0.1.8
+tqdm
+autopep8
+pylint
+ipython
+jupyterlab
+matplotlib
+h5py==3.1.0
