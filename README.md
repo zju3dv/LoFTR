@@ -3,7 +3,7 @@
 <br/>
 
 > LoFTR: Detector-Free Local Feature Matching with Transformers  
-> [Jiaming Sun](https://jiamingsun.ml)<sup>\*</sup>, [Zehong Shen](https://zehongs.github.io/)<sup>\*</sup>, [Yu'ang Wang](https://github.com/angshine)<sup>\*</sup>, [Hujun Bao](http://www.cad.zju.edu.cn/bao/), [Xiaowei Zhou](http://www.cad.zju.edu.cn/home/xzhou/)  
+> [Jiaming Sun](https://jiamingsun.ml)<sup>\*</sup>, [Zehong Shen](https://zehongs.github.io/)<sup>\*</sup>, [Yu'ang Wang](https://github.com/angshine)<sup>\*</sup>, [Hujun Bao](http://www.cad.zju.edu.cn/home/bao/), [Xiaowei Zhou](http://www.cad.zju.edu.cn/home/xzhou/)  
 > CVPR 2021
 
 ![demo_vid](assets/loftr-github-demo.gif)
@@ -107,7 +107,7 @@ cd demo
   # export CUDA_VISIBLE_DEVICES=0
 
   echo "Running LoFTR demo.."
-  eval "$(conda shell.zsh hook)"
+  eval "$(conda shell.bash hook)"
   conda activate loftr
   python demo_loftr.py --weight $model_ckpt --input $input
   # To save the input video and output match visualizations.
