@@ -1,4 +1,5 @@
 .vscode/
+__pycache__/
 *.pyc
 *.DS_Store
 *.swp
@@ -9,4 +10,7 @@ tmp.*
 logs/
 weights/
 dump/
+demo/*.mp4
+demo/demo_images/
 src/loftr/utils/superglue.py
+demo/utils.py

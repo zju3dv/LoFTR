@@ -15,12 +15,12 @@ In the meanwhile, discussions about the paper are welcomed in the [discussion pa
 
 - [x] Inference code and pretrained models (DS and OT) (2021-4-7)
 - [x] Code for reproducing the test-set results (2021-4-7)
-- [ ] Webcam demo to reproduce the result shown in the GIF above (expected 2021-4-13)
+- [x] Webcam demo to reproduce the result shown in the GIF above (2021-4-13)
 - [ ] Training code and training data preparation (expected 2021-6-10)
 
 ## Installation
 ```shell
-# For full pytorch-lightning trainer features
+# For full pytorch-lightning trainer features (recommended)
 conda env create -f environment.yaml
 conda activate loftr
 
@@ -33,7 +33,8 @@ We provide the [download link](https://drive.google.com/drive/folders/1DOcOPZb3-
   - the megadepth-1500-testset (~600MB).
   - 4 pretrained models of indoor-ds, indoor-ot, outdoor-ds and outdoor-ot (each ~45MB).
 
-By now, the LoFTR-DS model is ready to go!
+By now, the environment is all set and the LoFTR-DS model is ready to go! 
+If you want to run LoFTR-OT, some extra steps are needed:
 
 <details>
   <summary>[Requirements for LoFTR-OT]</summary>
@@ -71,7 +72,55 @@ By now, the LoFTR-DS model is ready to go!
 
 </details>
 
-An example is in the `notebooks/demo_single_pair.ipynb`.
+An example is given in `notebooks/demo_single_pair.ipynb`.
+
+### Online demo
+Run the online demo with a webcam to reproduce the result shown in the GIF above.
+```bash
+cd demo
+./run_demo.sh
+```
+<details>
+  <summary>[run_demo.sh]</summary>
+
+  ```bash
+  #!/bin/bash
+  set -e
+  # set -x
+
+  if [ ! -f utils.py ]; then
+      echo "Downloading utils.py from the SuperGlue repo."
+      echo "We cannot provide this file directly due to its strict licence."
+      wget https://raw.githubusercontent.com/magicleap/SuperGluePretrainedNetwork/master/models/utils.py
+  fi
+
+  # Use webcam 0 as input source. 
+  input=0
+  # or use a pre-recorded video given the path.
+  # input=/home/sunjiaming/Downloads/scannet_test/$scene_name.mp4
+
+  # Toggle indoor/outdoor model here.
+  model_ckpt=../weights/indoor_ds.ckpt
+  # model_ckpt=../weights/outdoor_ds.ckpt
+
+  # Optionally assign the GPU ID.
+  # export CUDA_VISIBLE_DEVICES=0
+
+  echo "Running LoFTR demo.."
+  eval "$(conda shell.zsh hook)"
+  conda activate loftr
+  python demo_loftr.py --weight $model_ckpt --input $input
+  # To save the input video and output match visualizations.
+  # python demo_loftr.py --weight $model_ckpt --input $input --save_video --save_input
+
+  # Running on remote GPU servers with no GUI.
+  # Save images first.
+  # python demo_loftr.py --weight $model_ckpt --input $input --no_display --output_dir="./demo_images/"
+  # Then convert them to a video.
+  # ffmpeg -framerate 15 -pattern_type glob -i '*.png' -c:v libx264 -r 30 -pix_fmt yuv420p out.mp4
+
+  ```
+</details>
 
 ### Reproduce the testing results with pytorch-lightning
 
@@ -84,11 +133,9 @@ bash ./scripts/reproduce_test/indoor_ds.sh
 python test.py configs/data/scannet_test_1500.py configs/loftr/loftr_ds.py --ckpt_path weights/indoor_ds.ckpt --profiler_name inference --gpus=1 --accelerator="ddp"
 ```
 
-For visualizing the dump results, please refer to `notebooks/visualize_dump_results.ipynb`.
+For visualizing the results, please refer to `notebooks/visualize_dump_results.ipynb`.
 
 <br/>
-
-
 
 
 
@@ -100,15 +147,10 @@ If you find this code useful for your research, please use the following BibTeX 
 @article{sun2021loftr,
   title={{LoFTR}: Detector-Free Local Feature Matching with Transformers},
   author={Sun, Jiaming and Shen, Zehong and Wang, Yuang and Bao, Hujun and Zhou, Xiaowei},
-  journal={CVPR},
+  journal={{CVPR}},
   year={2021}
 }
 ```
-
-<!-- ## Acknowledgment
-
-This repo is built based on the Mask R-CNN implementation from [maskrcnn-benchmark](https://github.com/facebookresearch/maskrcnn-benchmark), and we also use the pretrained Stereo R-CNN weight from [here](https://drive.google.com/file/d/1rZ5AsMms7-oO-VfoNTAmBFOr8O2L0-xt/view?usp=sharing) for initialization. -->
-
 
 ## Copyright
 This work is affiliated with ZJU-SenseTime Joint Lab of 3D Vision, and its intellectual property belongs to SenseTime Group Ltd.
