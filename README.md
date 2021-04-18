@@ -9,14 +9,18 @@
 ![demo_vid](assets/loftr-github-demo.gif)
 
 ## TODO List and ETA
-The entire codebase for data pre-processing, training and validation is under major refactoring and will be released around June.
-Please subscribe to [this discussion thread](https://github.com/zju3dv/LoFTR/discussions/2) if you wish to be notified of the code release.
-In the meanwhile, discussions about the paper are welcomed in the [discussion panel](https://github.com/zju3dv/LoFTR/discussions).
-
 - [x] Inference code and pretrained models (DS and OT) (2021-4-7)
 - [x] Code for reproducing the test-set results (2021-4-7)
 - [x] Webcam demo to reproduce the result shown in the GIF above (2021-4-13)
 - [ ] Training code and training data preparation (expected 2021-6-10)
+
+The entire codebase for data pre-processing, training and validation is under major refactoring and will be released around June.
+Please subscribe to [this discussion thread](https://github.com/zju3dv/LoFTR/discussions/2) if you wish to be notified of the code release.
+In the meanwhile, discussions about the paper are welcomed in the [discussion panel](https://github.com/zju3dv/LoFTR/discussions).
+
+## Colab demo
+Want to run LoFTR with your own image pair without writing any code? Try the Colab demo:
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1RG7rJQxMW-ek9B34A3M3hgegzH7b0Nfq?usp=sharing)
 
 ## Installation
 ```shell
@@ -48,7 +52,7 @@ If you want to run LoFTR-OT, some extra steps are needed:
 </details>
 
 
-## Run the code
+## Run LoFTR demos
 
 ### Match image pairs with LoFTR
 
@@ -75,7 +79,7 @@ If you want to run LoFTR-OT, some extra steps are needed:
 An example is given in `notebooks/demo_single_pair.ipynb`.
 
 ### Online demo
-Run the online demo with a webcam to reproduce the result shown in the GIF above.
+Run the online demo with a webcam or video to reproduce the result shown in the GIF above.
 ```bash
 cd demo
 ./run_demo.sh
