@@ -20,7 +20,7 @@ In the meanwhile, discussions about the paper are welcomed in the [discussion pa
 
 ## Colab demo
 Want to run LoFTR with your own image pair without writing any code? Try the Colab demo:
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1RG7rJQxMW-ek9B34A3M3hgegzH7b0Nfq?usp=sharing)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1BgNIOjFHauFoNB95LGesHBIjioX74USW?usp=sharing)
 
 ## Installation
 ```shell
