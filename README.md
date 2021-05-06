@@ -142,12 +142,46 @@ For visualizing the results, please refer to `notebooks/visualize_dump_results.i
 <br/>
 
 
+### Image pair info for training on ScanNet
+You can download the data at [here](https://drive.google.com/file/d/1fC2BezUSsSQy7_H65A0ZfrYK0RB3TXXj/view?usp=sharing).
+
+<details>
+  <summary>[data format]</summary>
+
+```python
+In [14]: npz_path = './cfg_1513_-1_0.2_0.8_0.15/scene_data/train/scene0000_01.npz'
+
+In [15]: data = np.load(npz_path)
+
+In [16]: data['name']
+Out[16]:
+array([[   0,    1,  276,  567],
+       [   0,    1, 1147, 1170],
+       [   0,    1,  541, 5757],
+       ...,
+       [   0,    1, 5366, 5393],
+       [   0,    1, 2607, 5278],
+       [   0,    1,  736, 5844]], dtype=uint16)
+
+In [17]: data['score']
+Out[17]: array([0.2903, 0.7715, 0.5986, ..., 0.7227, 0.5527, 0.4148], dtype=float16)
+
+In [18]: len(data['name'])
+Out[18]: 1684276
+
+In [19]: len(data['score'])
+Out[19]: 1684276
+```
+`data['name']` is the image pair info, organized as [`scene_id`, `seq_id`, `image0_id`, `image1_id`].
+
+`data['score']` is the overlapping score defined in [SuperGlue](https://arxiv.org/pdf/1911.11763) (Page 12).
+</details>
 
 ## Citation
 
 If you find this code useful for your research, please use the following BibTeX entry.
 
-```
+```bibtex
 @article{sun2021loftr,
   title={{LoFTR}: Detector-Free Local Feature Matching with Transformers},
   author={Sun, Jiaming and Shen, Zehong and Wang, Yuang and Bao, Hujun and Zhou, Xiaowei},
