@@ -11,17 +11,23 @@ def mask_border(m, b: int, v):
         b (int)
         v (m.dtype)
     """
+    if b <= 0:
+        return
+
     m[:, :b] = v
     m[:, :, :b] = v
     m[:, :, :, :b] = v
     m[:, :, :, :, :b] = v
-    m[:, -b:0] = v
-    m[:, :, -b:0] = v
-    m[:, :, :, -b:0] = v
-    m[:, :, :, :, -b:0] = v
+    m[:, -b:] = v
+    m[:, :, -b:] = v
+    m[:, :, :, -b:] = v
+    m[:, :, :, :, -b:] = v
 
 
 def mask_border_with_padding(m, bd, v, p_m0, p_m1):
+    if bd <= 0:
+        return
+
     m[:, :bd] = v
     m[:, :, :bd] = v
     m[:, :, :, :bd] = v
