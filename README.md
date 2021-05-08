@@ -19,7 +19,7 @@ Please subscribe to [this discussion thread](https://github.com/zju3dv/LoFTR/dis
 In the meanwhile, discussions about the paper are welcomed in the [discussion panel](https://github.com/zju3dv/LoFTR/discussions).
 
 ## Colab demo
-Want to run LoFTR with your own image pair without writing any code? Try the Colab demo:
+Want to run LoFTR with custom image pairs without configuring your own GPU environment? Try the Colab demo:
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1BgNIOjFHauFoNB95LGesHBIjioX74USW?usp=sharing)
 
 ## Installation
