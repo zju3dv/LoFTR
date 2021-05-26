@@ -33,7 +33,6 @@ def make_matching_figure(img0, img1, mkpts0, mkpts1, color, text=[], path=None):
     fig.text(
         0.01, 0.99, '\n'.join(text), transform=fig.axes[0].transAxes,
         fontsize=15, va='top', ha='left', color=txt_color)
-    plt.tight_layout(pad=1)
 
     # save or return figure
     if path:
