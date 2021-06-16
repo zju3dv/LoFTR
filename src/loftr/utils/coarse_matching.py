@@ -197,6 +197,7 @@ class CoarseMatching(nn.Module):
 
         # 4. Random sampling of training samples for fine-level LoFTR
         # (optional) pad samples with gt coarse-level matches
+        if self.training:
             # NOTE:
             # The sampling is performed across all pairs in a batch without manually balancing
             # #samples for fine-level increases w.r.t. batch_size
