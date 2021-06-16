@@ -21,7 +21,8 @@ class MegaDepthDataset(Dataset):
                  augment_fn=None,
                  **kwargs):
         """
-        Manage one scene(npz_path) of MegaDepth dataset.        
+        Manage one scene(npz_path) of MegaDepth dataset.
+        
         Args:
             root_dir (str): megadepth root directory that has `phoenix`.
             npz_path (str): {scene_id}.npz path. This contains image pair information of a scene.
@@ -69,12 +70,14 @@ class MegaDepthDataset(Dataset):
         # read grayscale image and mask. (1, h, w) and (h, w)
         img_name0 = osp.join(self.root_dir, self.scene_info['image_paths'][idx0])
         img_name1 = osp.join(self.root_dir, self.scene_info['image_paths'][idx1])
+        
+        # TODO: Support augmentation & handle seeds for each worker correctly.
         image0, mask0, scale0 = read_megadepth_gray(
-            img_name0, self.img_resize, self.df, self.img_padding,
-            np.random.choice([self.augment_fn, None], p=[0.5, 0.5]))
+            img_name0, self.img_resize, self.df, self.img_padding, None)
+            # np.random.choice([self.augment_fn, None], p=[0.5, 0.5]))
         image1, mask1, scale1 = read_megadepth_gray(
-            img_name1, self.img_resize, self.df, self.img_padding,
-            np.random.choice([self.augment_fn, None], p=[0.5, 0.5]))
+            img_name1, self.img_resize, self.df, self.img_padding, None)
+            # np.random.choice([self.augment_fn, None], p=[0.5, 0.5]))
 
         # read depth. shape: (h, w)
         if self.mode in ['train', 'val']:

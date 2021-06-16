@@ -7,8 +7,7 @@ channels:
 dependencies:
   - python=3.8
   - cudatoolkit=10.2
-  - pytorch=1.8.0
-  - pytorch-lightning<=1.1.8  # https://github.com/PyTorchLightning/pytorch-lightning/issues/6318
+  - pytorch=1.8.1
   - pip
   - pip:
       - -r file:requirements.txt

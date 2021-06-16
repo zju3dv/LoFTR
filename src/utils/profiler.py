@@ -32,7 +32,6 @@ def build_profiler(name):
         return InferenceProfiler()
     elif name == 'pytorch':
         from pytorch_lightning.profiler import PyTorchProfiler
-        # TODO: this profiler will be introduced after upgrading pl dependency to 1.3.0 @zehong
         return PyTorchProfiler(use_cuda=True, profile_memory=True, row_limit=100)
     elif name is None:
         return PassThroughProfiler()

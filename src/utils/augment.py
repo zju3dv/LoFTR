@@ -39,6 +39,8 @@ class MobileAug(object):
 
 
 def build_augmentor(method=None, **kwargs):
+    if method is not None:
+        raise NotImplementedError('Using of augmentation functions are not supported yet!')
     if method == 'dark':
         return DarkAug()
     elif method == 'mobile':

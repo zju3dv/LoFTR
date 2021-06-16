@@ -1,15 +1,46 @@
+import io
+from loguru import logger
+
 import cv2
 import numpy as np
 import h5py
 import torch
+from numpy.linalg import inv
 
+
+MEGADEPTH_CLIENT = SCANNET_CLIENT = None
 
 # --- DATA IO ---
 
-def imread_gray(path, augment_fn=None):
-    if augment_fn is None:
-        image = cv2.imread(str(path), cv2.IMREAD_GRAYSCALE)
+def load_array_from_s3(
+    path, client, cv_type,
+    use_h5py=False,
+):
+    byte_str = client.Get(path)
+    try:
+        if not use_h5py:
+            raw_array = np.fromstring(byte_str, np.uint8)
+            data = cv2.imdecode(raw_array, cv_type)
+        else:
+            f = io.BytesIO(byte_str)
+            data = np.array(h5py.File(f, 'r')['/depth'])
+    except Exception as ex:
+        print(f"==> Data loading failure: {path}")
+        raise ex
+
+    assert data is not None
+    return data
+
+
+def imread_gray(path, augment_fn=None, client=SCANNET_CLIENT):
+    cv_type = cv2.IMREAD_GRAYSCALE if augment_fn is None \
+                else cv2.IMREAD_COLOR
+    if str(path).startswith('s3://'):
+        image = load_array_from_s3(str(path), client, cv_type)
     else:
+        image = cv2.imread(str(path), cv_type)
+
+    if augment_fn is not None:
         image = cv2.imread(str(path), cv2.IMREAD_COLOR)
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
         image = augment_fn(image)
@@ -68,7 +99,7 @@ def read_megadepth_gray(path, resize=None, df=None, padding=False, augment_fn=No
         scale (torch.tensor): [w/w_new, h/h_new]        
     """
     # read image
-    image = imread_gray(path, augment_fn)
+    image = imread_gray(path, augment_fn, client=MEGADEPTH_CLIENT)
 
     # resize image
     w, h = image.shape[1], image.shape[0]
@@ -91,7 +122,10 @@ def read_megadepth_gray(path, resize=None, df=None, padding=False, augment_fn=No
 
 
 def read_megadepth_depth(path, pad_to=None):
-    depth = np.array(h5py.File(path, 'r')['depth'])
+    if str(path).startswith('s3://'):
+        depth = load_array_from_s3(path, MEGADEPTH_CLIENT, None, use_h5py=True)
+    else:
+        depth = np.array(h5py.File(path, 'r')['depth'])
     if pad_to is not None:
         depth, _ = pad_bottom_right(depth, pad_to, ret_mask=False)
     depth = torch.from_numpy(depth).float()  # (h, w)
@@ -120,6 +154,28 @@ def read_scannet_gray(path, resize=(640, 480), augment_fn=None):
 
 
 def read_scannet_depth(path):
-    depth = cv2.imread(str(path), cv2.IMREAD_UNCHANGED) / 1000
+    if str(path).startswith('s3://'):
+        depth = load_array_from_s3(str(path), SCANNET_CLIENT, cv2.IMREAD_UNCHANGED)
+    else:
+        depth = cv2.imread(str(path), cv2.IMREAD_UNCHANGED)
+    depth = depth / 1000
     depth = torch.from_numpy(depth).float()  # (h, w)
     return depth
+
+
+def read_scannet_pose(path):
+    """ Read ScanNet's Camera2World pose and transform it to World2Camera.
+    
+    Returns:
+        pose_w2c (np.ndarray): (4, 4)
+    """
+    cam2world = np.loadtxt(path, delimiter=' ')
+    world2cam = inv(cam2world)
+    return world2cam
+
+
+def read_scannet_intrinsic(path):
+    """ Read ScanNet's intrinsic matrix and return the 3x3 matrix.
+    """
+    intrinsic = np.loadtxt(path, delimiter=' ')
+    return intrinsic[:-1, :-1]

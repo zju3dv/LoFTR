@@ -12,7 +12,7 @@
 - [x] Inference code and pretrained models (DS and OT) (2021-4-7)
 - [x] Code for reproducing the test-set results (2021-4-7)
 - [x] Webcam demo to reproduce the result shown in the GIF above (2021-4-13)
-- [ ] Training code and training data preparation (expected 2021-6-10)
+- [x] Training code and training data preparation (expected 2021-6-10)
 
 The entire codebase for data pre-processing, training and validation is under major refactoring and will be released around June.
 Please subscribe to [this discussion thread](https://github.com/zju3dv/LoFTR/discussions/2) if you wish to be notified of the code release.
@@ -176,6 +176,10 @@ Out[19]: 1684276
 
 `data['score']` is the overlapping score defined in [SuperGlue](https://arxiv.org/pdf/1911.11763) (Page 12).
 </details>
+
+
+## Training
+See [Training LoFTR](./docs/TRAINING.md) for more details.
 
 ## Citation
 
