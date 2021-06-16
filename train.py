@@ -25,7 +25,9 @@ def parse_args():
     # check documentation: https://pytorch-lightning.readthedocs.io/en/latest/common/trainer.html#trainer-flags
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument(
+        'data_cfg_path', type=str, help='data config path')
     parser.add_argument(
+        'main_cfg_path', type=str, help='main config path')
     parser.add_argument(
         '--exp_name', type=str, default='default_exp_name')
     parser.add_argument(
@@ -37,6 +39,7 @@ def parse_args():
         nargs='?', default=True, help='whether loading data to pinned memory or not')
     parser.add_argument(
         '--ckpt_path', type=str, default=None,
+        help='pretrained checkpoint path, helpful for using a pre-trained coarse-only LoFTR')
     parser.add_argument(
         '--disable_ckpt', action='store_true',
         help='disable checkpoint saving (useful for debugging).')
@@ -46,7 +49,7 @@ def parse_args():
     parser.add_argument(
         '--parallel_load_data', action='store_true',
         help='load datasets in with multiple processes.')
-    
+
     parser = pl.Trainer.add_argparse_args(parser)
     return parser.parse_args()
 
