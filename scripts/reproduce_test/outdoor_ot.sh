@@ -26,4 +26,3 @@ python -u ./test.py \
     --batch_size=${batch_size} --num_workers=${torch_num_workers}\
     --profiler_name=${profiler_name} \
     --benchmark 
-    
