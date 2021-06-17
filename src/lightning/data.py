@@ -75,13 +75,13 @@ class MultiSceneDataModule(pl.LightningDataModule):
         self.train_loader_params = {
             'batch_size': args.batch_size,
             'num_workers': args.num_workers,
-            'pin_memory': args.pin_memory,
+            'pin_memory': getattr(args, 'pin_memory', True)
         }
         self.val_loader_params = {
             'batch_size': 1,
             'shuffle': False,
             'num_workers': args.num_workers,
-            'pin_memory': args.pin_memory,
+            'pin_memory': getattr(args, 'pin_memory', True)
         }
         self.test_loader_params = {
             'batch_size': 1,

@@ -99,6 +99,7 @@ _CN.DATASET.MGDPT_DF = 8
 
 ##############  Trainer  ##############
 _CN.TRAINER = CN()
+_CN.TRAINER.WORLD_SIZE = 1
 _CN.TRAINER.CANONICAL_BS = 64
 _CN.TRAINER.CANONICAL_LR = 6e-3
 _CN.TRAINER.SCALING = None  # this will be calculated automatically

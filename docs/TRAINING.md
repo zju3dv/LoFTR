@@ -37,8 +37,8 @@ ln -s /path/to/scannet_indices/* /path/to/LoFTR/data/scannet/index
 
 # megadepth
 # -- # train and test dataset (train and test share the same dataset)
-ln -s /path/to/megadepth/Undistorted_SfM/* /path/to/LoFTR/data/megadepth/train
-ln -s /path/to/megadepth/Undistorted_SfM/* /path/to/LoFTR/data/megadepth/test
+ln -s /path/to/megadepth/Undistorted_SfM /path/to/LoFTR/data/megadepth/train
+ln -s /path/to/megadepth/Undistorted_SfM /path/to/LoFTR/data/megadepth/test
 # -- # dataset indices
 ln -s /path/to/megadepth_indices/* /path/to/LoFTR/data/megadepth/index
 ```

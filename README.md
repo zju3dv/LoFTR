@@ -127,6 +127,13 @@ cd demo
 </details>
 
 ### Reproduce the testing results with pytorch-lightning
+You need to setup the testing subsets of ScanNet and MegaDepth first. We create symlinks from the previously downloaded datasets to `data/{{dataset}}/test`.
+
+```shell
+# set up symlinks
+ln -s /path/to/scannet-1500-testset/* /path/to/LoFTR/data/scannet/test
+ln -s /path/to/megadepth-1500-testset/* /path/to/LoFTR/data/megadepth/test
+```
 
 ```shell
 conda activate loftr
@@ -142,7 +149,7 @@ For visualizing the results, please refer to `notebooks/visualize_dump_results.i
 <br/>
 
 
-### Image pair info for training on ScanNet
+<!-- ### Image pair info for training on ScanNet
 You can download the data at [here](https://drive.google.com/file/d/1fC2BezUSsSQy7_H65A0ZfrYK0RB3TXXj/view?usp=sharing).
 
 <details>
@@ -175,7 +182,7 @@ Out[19]: 1684276
 `data['name']` is the image pair info, organized as [`scene_id`, `seq_id`, `image0_id`, `image1_id`].
 
 `data['score']` is the overlapping score defined in [SuperGlue](https://arxiv.org/pdf/1911.11763) (Page 12).
-</details>
+</details> -->
 
 
 ## Training

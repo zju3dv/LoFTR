@@ -16,10 +16,6 @@ def _compute_conf_thresh(data):
 
 
 # --- VISUALIZATION --- #
-def plot_keypoints(axes, kpts0, kpts1, color='w', ps=2):
-    axes[0].scatter(kpts0[:, 0], kpts0[:, 1], c=color, s=ps)
-    axes[1].scatter(kpts1[:, 0], kpts1[:, 1], c=color, s=ps)
-
 
 def make_matching_figure(
         img0, img1, mkpts0, mkpts1, color,
@@ -38,8 +34,8 @@ def make_matching_figure(
     
     if kpts0 is not None:
         assert kpts1 is not None
-        # plot_keypoints(axes, kpts0, kpts1, color='k', ps=4)
-        plot_keypoints(axes, kpts0, kpts1, color='w', ps=2)
+        axes[0].scatter(kpts0[:, 0], kpts0[:, 1], c='w', s=2)
+        axes[1].scatter(kpts1[:, 0], kpts1[:, 1], c='w', s=2)
 
     # draw matches
     if mkpts0.shape[0] != 0 and mkpts1.shape[0] != 0:
@@ -98,7 +94,7 @@ def _make_evaluation_figure(data, b_id, alpha='dynamic'):
     color = error_colormap(epi_errs, conf_thr, alpha=alpha)
     
     text = [
-        f'Matches {len(kpts0)}',
+        f'#Matches {len(kpts0)}',
         f'Precision({conf_thr:.2e}) ({100 * precision:.1f}%): {n_correct}/{len(kpts0)}',
         f'Recall({conf_thr:.2e}) ({100 * recall:.1f}%): {n_correct}/{n_gt_matches}'
     ]
@@ -115,15 +111,12 @@ def _make_confidence_figure(data, b_id):
 
 def make_matching_figures(data, config, mode='evaluation'):
     """ Make matching figures for a batch.
+    
     Args:
         data (Dict): a batch updated by PL_LoFTR.
         config (Dict): matcher config
     Returns:
         figures (Dict[str, List[plt.figure]]
-    TODO:
-        - confidence mode plotting
-        - parallel plotting
-        - evaluation mode & confidence mode at the same time
     """
     assert mode in ['evaluation', 'confidence']  # 'confidence'
     figures = {mode: []}
