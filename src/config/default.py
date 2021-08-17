@@ -20,6 +20,7 @@ _CN.LOFTR.COARSE.D_FFN = 256
 _CN.LOFTR.COARSE.NHEAD = 8
 _CN.LOFTR.COARSE.LAYER_NAMES = ['self', 'cross'] * 4
 _CN.LOFTR.COARSE.ATTENTION = 'linear'  # options: ['linear', 'full']
+_CN.LOFTR.COARSE.TEMP_BUG_FIX = True
 
 # 3. Coarse-Matching config
 _CN.LOFTR.MATCH_COARSE = CN()

@@ -8,7 +8,7 @@ export PYTHONPATH=$PROJECT_DIR:$PYTHONPATH
 cd $PROJECT_DIR
 
 data_cfg_path="configs/data/megadepth_test_1500.py"
-main_cfg_path="configs/loftr/outdoor/loftr_ds.py"
+main_cfg_path="configs/loftr/outdoor/buggy_pos_enc/loftr_ds.py"
 ckpt_path="weights/outdoor_ds.ckpt"
 dump_dir="dump/loftr_ds_outdoor"
 profiler_name="inference"

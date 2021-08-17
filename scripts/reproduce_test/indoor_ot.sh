@@ -8,7 +8,7 @@ export PYTHONPATH=$PROJECT_DIR:$PYTHONPATH
 cd $PROJECT_DIR
 
 data_cfg_path="configs/data/scannet_test_1500.py"
-main_cfg_path="configs/loftr/indoor/loftr_ot.py"
+main_cfg_path="configs/loftr/indoor/buggy_pos_enc/loftr_ot.py"
 ckpt_path="weights/indoor_ot.ckpt"
 dump_dir="dump/loftr_ot_indoor"
 profiler_name="inference"

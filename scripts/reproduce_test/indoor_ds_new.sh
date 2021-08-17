@@ -1,4 +1,5 @@
 #!/bin/bash -l
+# a indoor_ds model with the pos_enc impl bug fixed.
 
 SCRIPTPATH=$(dirname $(readlink -f "$0"))
 PROJECT_DIR="${SCRIPTPATH}/../../"
@@ -7,10 +8,10 @@ PROJECT_DIR="${SCRIPTPATH}/../../"
 export PYTHONPATH=$PROJECT_DIR:$PYTHONPATH
 cd $PROJECT_DIR
 
-data_cfg_path="configs/data/megadepth_test_1500.py"
-main_cfg_path="configs/loftr/outdoor/buggy_pos_enc/loftr_ot.py"
-ckpt_path="weights/outdoor_ot.ckpt"
-dump_dir="dump/loftr_ot_outdoor"
+data_cfg_path="configs/data/scannet_test_1500.py"
+main_cfg_path="configs/loftr/indoor/scannet/loftr_ds_eval_new.py"
+ckpt_path="weights/indoor_ds_new.ckpt"
+dump_dir="dump/loftr_ds_indoor_new"
 profiler_name="inference"
 n_nodes=1  # mannually keep this the same with --nodes
 n_gpus_per_node=-1
@@ -26,3 +27,4 @@ python -u ./test.py \
     --batch_size=${batch_size} --num_workers=${torch_num_workers}\
     --profiler_name=${profiler_name} \
     --benchmark 
+    

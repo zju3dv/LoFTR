@@ -17,7 +17,9 @@ class LoFTR(nn.Module):
 
         # Modules
         self.backbone = build_backbone(config)
-        self.pos_encoding = PositionEncodingSine(config['coarse']['d_model'])
+        self.pos_encoding = PositionEncodingSine(
+            config['coarse']['d_model'],
+            temp_bug_fix=config['coarse']['temp_bug_fix'])
         self.loftr_coarse = LocalFeatureTransformer(config['coarse'])
         self.coarse_matching = CoarseMatching(config['match_coarse'])
         self.fine_preprocess = FinePreprocess(config)
