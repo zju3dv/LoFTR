@@ -73,3 +73,9 @@ class LoFTR(nn.Module):
 
         # 5. match fine-level
         self.fine_matching(feat_f0_unfold, feat_f1_unfold, data)
+
+    def load_state_dict(self, state_dict, *args, **kwargs):
+        for k in list(state_dict.keys()):
+            if k.startswith('matcher.'):
+                state_dict[k.replace('matcher.', '', 1)] = state_dict.pop(k)
+        return super().load_state_dict(state_dict, *args, **kwargs)

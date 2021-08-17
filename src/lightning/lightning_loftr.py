@@ -45,9 +45,6 @@ class PL_LoFTR(pl.LightningModule):
         # Pretrained weights
         if pretrained_ckpt:
             state_dict = torch.load(pretrained_ckpt, map_location='cpu')['state_dict']
-            for k in list(state_dict.keys()):
-                if k.startswith('matcher.'):
-                    state_dict[k.replace('matcher.', '', 1)] = state_dict.pop(k)
             self.matcher.load_state_dict(state_dict, strict=True)
             logger.info(f"Load \'{pretrained_ckpt}\' as pretrained checkpoint")
         

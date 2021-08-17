@@ -25,6 +25,7 @@ _CN.COARSE.D_FFN = 256
 _CN.COARSE.NHEAD = 8
 _CN.COARSE.LAYER_NAMES = ['self', 'cross'] * 4
 _CN.COARSE.ATTENTION = 'linear'  # options: ['linear', 'full']
+_CN.COARSE.TEMP_BUG_FIX = False
 
 # 3. Coarse-Matching config
 _CN.MATCH_COARSE = CN()
