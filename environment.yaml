@@ -10,4 +10,4 @@ dependencies:
   - pytorch=1.8.1
   - pip
   - pip:
-      - -r file:requirements.txt
+      - -r requirements.txt
