@@ -18,6 +18,8 @@ The entire codebase for data pre-processing, training and validation is under ma
 Please subscribe to [this discussion thread](https://github.com/zju3dv/LoFTR/discussions/2) if you wish to be notified of the code release.
 In the meanwhile, discussions about the paper are welcomed in the [discussion panel](https://github.com/zju3dv/LoFTR/discussions).
 
+:triangular_flag_on_post: **Updates**
+- :white_check_mark: Integrated to [Huggingface Spaces](https://huggingface.co/spaces) with [Gradio](https://github.com/gradio-app/gradio). See [Gradio Web Demo](https://huggingface.co/spaces/akhaliq/Kornia-LoFTR)
 ## Colab demo
 Want to run LoFTR with custom image pairs without configuring your own GPU environment? Try the Colab demo:
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1BgNIOjFHauFoNB95LGesHBIjioX74USW?usp=sharing)
