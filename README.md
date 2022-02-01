@@ -17,7 +17,7 @@
 Discussions about the paper are welcomed in the [discussion panel](https://github.com/zju3dv/LoFTR/discussions).
 
 :triangular_flag_on_post: **Updates**
-- Check out [QuadTreeAttention](ttps://github.com/Tangshitao/QuadTreeAttention), a new attention machanism that improves the efficiency and performance of LoFTR with less demanding GPU requirements for training.
+- Check out [QuadTreeAttention](https://github.com/Tangshitao/QuadTreeAttention), a new attention machanism that improves the efficiency and performance of LoFTR with less demanding GPU requirements for training.
 - :white_check_mark: Integrated to [Huggingface Spaces](https://huggingface.co/spaces) with [Gradio](https://github.com/gradio-app/gradio). See [Gradio Web Demo](https://huggingface.co/spaces/akhaliq/Kornia-LoFTR)
 ## Colab demo
 Want to run LoFTR with custom image pairs without configuring your own GPU environment? Try the Colab demo:
