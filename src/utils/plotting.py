@@ -129,7 +129,7 @@ def make_matching_figures(data, config, mode='evaluation'):
             fig = _make_confidence_figure(data, b_id)
         else:
             raise ValueError(f'Unknown plot mode: {mode}')
-    figures[mode].append(fig)
+        figures[mode].append(fig)
     return figures
 
 
