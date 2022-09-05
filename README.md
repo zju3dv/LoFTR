@@ -23,6 +23,22 @@ Discussions about the paper are welcomed in the [discussion panel](https://githu
 Want to run LoFTR with custom image pairs without configuring your own GPU environment? Try the Colab demo:
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1BgNIOjFHauFoNB95LGesHBIjioX74USW?usp=sharing)
 
+## Using from kornia
+
+LoFTR is integrated into [kornia](https://github.com/kornia/kornia) library since version 0.5.11.
+
+```
+pip install kornia
+```
+
+Then you can import it as 
+```python3
+from kornia.feature import LoFTR
+```
+
+See tutorial on using LoFTR from kornia [here](https://kornia-tutorials.readthedocs.io/en/latest/image_matching.html).
+
+
 ## Installation
 ```shell
 # For full pytorch-lightning trainer features (recommended)
