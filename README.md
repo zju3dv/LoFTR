@@ -16,6 +16,11 @@
 
 Discussions about the paper are welcomed in the [discussion panel](https://github.com/zju3dv/LoFTR/discussions).
 
+:thinking: **FAQ**
+
+1. Undistorted images from D2Net are not available anymore.  
+   For a temporal alternative, please use the undistorted images provided by the MegaDepth_v1 (should be downloaded along with the required depth files). We numerically compared these images and only found very subtle difference.
+
 :triangular_flag_on_post: **Updates**
 - Check out [QuadTreeAttention](https://github.com/Tangshitao/QuadTreeAttention), a new attention machanism that improves the efficiency and performance of LoFTR with less demanding GPU requirements for training.
 - :white_check_mark: Integrated to [Huggingface Spaces](https://huggingface.co/spaces) with [Gradio](https://github.com/gradio-app/gradio). See [Gradio Web Demo](https://huggingface.co/spaces/akhaliq/Kornia-LoFTR)
