@@ -41,7 +41,7 @@ def spvs_coarse(data, config):
     _, _, H1, W1 = data['image1'].shape
     scale = config['LOFTR']['RESOLUTION'][0]
     scale0 = scale * data['scale0'][:, None] if 'scale0' in data else scale
-    scale1 = scale * data['scale1'][:, None] if 'scale0' in data else scale
+    scale1 = scale * data['scale1'][:, None] if 'scale1' in data else scale
     h0, w0, h1, w1 = map(lambda x: x // scale, [H0, W0, H1, W1])
 
     # 2. warp grids
