@@ -41,7 +41,7 @@ Then you can import it as
 from kornia.feature import LoFTR
 ```
 
-See tutorial on using LoFTR from kornia [here](https://kornia-tutorials.readthedocs.io/en/latest/image_matching.html).
+See tutorial on using LoFTR from kornia [here](https://kornia-tutorials.readthedocs.io/en/latest/_nbs/image_matching.html).
 
 
 ## Installation
