@@ -7,8 +7,8 @@ import torch
 import cv2
 
 
-from src.utils.plotting import make_matching_figure
-from src.loftr import LoFTR, default_cfg
+from third_party.src.utils.plotting import make_matching_figure
+from third_party.src.loftr import LoFTR, default_cfg
 import time
 CONF_FACTOR = 0.0
 RUN_EDGES = False
