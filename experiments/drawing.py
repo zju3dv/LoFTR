@@ -95,4 +95,6 @@ def draw_matches_on_images(img0, img1, kpts0, kpts1, conf, title:str = "LoFTR", 
     plt.tight_layout()
     if save_path is not None:
         plt.savefig(save_path)
-    plt.show()
+        plt.close(fig)
+    else:
+        plt.show()

@@ -31,6 +31,7 @@ def matching_by_loftr(img0, img1, matcher):
         mkpts1 = batch['mkpts1_f'].cpu().numpy()
         mconf = batch['mconf'].cpu().numpy()
     return mkpts0, mkpts1, mconf
+
 def matching_by_sift(img0, img1):
     sift = cv2.SIFT_create()
     kp0, des0 = sift.detectAndCompute(img0, None)
@@ -45,7 +46,6 @@ def matching_by_sift(img0, img1):
         if m.distance < 0.78 * n.distance:
             good.append([m])
     return kp0, kp1, good
-
 
 def init_model(weights_path, is_indoor):
     """

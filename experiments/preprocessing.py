@@ -45,13 +45,14 @@ def normalize_image(image):
     """
     image = image - np.min(image)
     image = image / np.max(image)
-    return image
+    return image.astype(np.uint8)
 def equalize_hist(image):
     """
     Equalize image histogram
     """
     equalized_image = cv2.equalizeHist(image.astype(np.uint8))
-    return (normalize_image(equalized_image) * 255.).astype(np.uint8)
+    return equalized_image
+
 def get_divisible_wh(w, h, df=None):
     """
     Get divisible width and height
