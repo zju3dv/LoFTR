@@ -20,7 +20,8 @@ def matching_by_loftr(img0, img1, matcher):
         mkpts0 = batch['mkpts0_f'].cpu().numpy()
         mkpts1 = batch['mkpts1_f'].cpu().numpy()
         mconf = batch['mconf'].cpu().numpy()
-    return mkpts0, mkpts1, mconf
+        m_bids = batch['m_bids'].cpu().numpy()
+    return mkpts0, mkpts1, mconf, m_bids
 
 def matching_by_sift(img0, img1):
     sift = cv2.SIFT_create()
