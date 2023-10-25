@@ -49,7 +49,7 @@ class LoFTR_Inference:
         img0_torch, img1_torch = self.img2net_input(img0), self.img2net_input(img1)
 
         # run matcher inference
-        mkpts0, mkpts1, mconf, mbids = self.run_matching(img0_torch, img1_torch, self.matcher)
+        mkpts0, mkpts1, mconf, mbids = self.run_matching(img0_torch, img1_torch)
 
         return mkpts0, mkpts1, mconf, mbids
 

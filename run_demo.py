@@ -114,7 +114,8 @@ if __name__ == '__main__':
     from tqdm import tqdm
     from loftr_inference import *
     img0, img1, weights = load_outdoor_demo_data(False)
-    run_inference(img0, img1, weights_path=weights, is_indoor=False, show_matches=False)
+    loftr = LoFTR_Inference(weights)
+    loftr.predict(img0[None][None], img1[None][None])
     # run_demo(img0, img1, weights_path=weights,is_indoor=False, remove_outliers=False, width_len=512, save_path=None)
 
 
