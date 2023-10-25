@@ -1,24 +1,55 @@
-from inference.matching import *
-from inference.preprocessing import *
-from inference.drawing import *
+import torch
+import numpy as np
 
-def run_inference(img0: np.ndarray, img1: np.ndarray, weights_path: str = None,show_matches: bool = False,
-                  conf_factor: float = 0.0, save_path: str = None, draw_epipolar_lines: bool = False):
-    # initiate LoFTR model
-    matcher = init_model(weights_path=weights_path)
+from src.loftr import LoFTR, default_cfg
+import time
 
-    # Preprocess images
-    img0_torch, img1_torch = img2net_input(img0), img2net_input(img1)
+class LoFTR_Inference:
+    def __init__(self, weights_path: str = None):
+        self.weights_path = weights_path
+        self.matcher = self.init_model()
 
+    def init_model(self,):
+        """
+        Init LoFTR model
+        """
+        # init model
+        model = LoFTR(config=default_cfg)
+        # load the pretrained model
+        model.load_state_dict(torch.load(self.weights_path)['state_dict'])
+        model = model.eval().cuda()
+        return model
 
-    # run matcher inference
-    mkpts0, mkpts1, mconf, mbids = matching_by_loftr(img0_torch, img1_torch, matcher)
+    @staticmethod
+    def img2net_input(img: np.ndarray):
+        """
+        Convert image to network input
+        """
+        return torch.from_numpy(img).cuda() / 255.
 
-    if show_matches:
-        draw_matches_on_images(img0, img1, mkpts0, mkpts1, mconf,
-                               title='LoFTR Matcher - reference (left) to query (right)',
-                               draw_epipolar_lines=draw_epipolar_lines, f_matrix=None, conf_factor=conf_factor,
-                               save_path=save_path)
+    def run_matching(self, img0: torch.tensor, img1: torch.tensor):
+        # inputs to matcher
+        batch = {'image0': img0, 'image1': img1}
 
-    return mkpts0, mkpts1, mconf, mbids
+        # Inference with LoFTR and get prediction
+        with torch.no_grad():
+            # measure time
+            start_time = time.time()
+            self.matcher(batch)
+            end_time = time.time()
+            print(f"running duration {(end_time - start_time):.2f} seconds")
+            mkpts0 = batch['mkpts0_f'].cpu().numpy()
+            mkpts1 = batch['mkpts1_f'].cpu().numpy()
+            mconf = batch['mconf'].cpu().numpy()
+            m_bids = batch['m_bids'].cpu().numpy()
+        return mkpts0, mkpts1, mconf, m_bids
+
+    def predict(self, img0: np.ndarray, img1: np.ndarray):
+        # Preprocess images
+        img0_torch, img1_torch = self.img2net_input(img0), self.img2net_input(img1)
+
+        # run matcher inference
+        mkpts0, mkpts1, mconf, mbids = self.run_matching(img0_torch, img1_torch, self.matcher)
+
+        return mkpts0, mkpts1, mconf, mbids
 
