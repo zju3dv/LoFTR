@@ -1,18 +1,8 @@
-import os
-# os.chdir("..")
-from copy import deepcopy
-
-import matplotlib.pyplot as plt
 import torch
 import cv2
 
-
-from src.utils.plotting import make_matching_figure
 from src.loftr import LoFTR, default_cfg
 import time
-CONF_FACTOR = 0.0
-RUN_EDGES = False
-DRAW_EPIPOLAR_LINES = False
 
 
 
@@ -47,15 +37,12 @@ def matching_by_sift(img0, img1):
             good.append([m])
     return kp0, kp1, good
 
-def init_model(weights_path, is_indoor):
+def init_model(weights_path):
     """
     Init LoFTR model
     """
     # init model
-    _default_cfg = deepcopy(default_cfg)
-    if is_indoor:
-        _default_cfg['coarse']['temp_bug_fix'] = True  # set to False when using the old ckpt
-    model = LoFTR(config=_default_cfg)
+    model = LoFTR(config=default_cfg)
     # load the pretrained model
     model.load_state_dict(torch.load(weights_path)['state_dict'])
     model = model.eval().cuda()
