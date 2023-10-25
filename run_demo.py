@@ -1,10 +1,10 @@
 import os
 # os.chdir("..")
 from copy import deepcopy
-from experiments.matching import *
-from experiments.preprocessing import *
-from experiments.drawing import *
-from experiments.data_management import *
+from inference.matching import *
+from inference.preprocessing import *
+from inference.drawing import *
+from inference.data_management import *
 import matplotlib.pyplot as plt
 import torch
 import cv2

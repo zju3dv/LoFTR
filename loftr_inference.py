@@ -1,6 +1,6 @@
-from experiments.matching import *
-from experiments.preprocessing import *
-from experiments.drawing import *
+from inference.matching import *
+from inference.preprocessing import *
+from inference.drawing import *
 
 def run_inference(img0: np.ndarray, img1: np.ndarray, weights_path: str = None, is_indoor: bool = False, show_matches: bool = False, conf_factor: float = 0.0, save_path: str = None):
     # initiate LoFTR model
