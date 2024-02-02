@@ -12,7 +12,7 @@ import numpy as np
 import paralleldomain as pd
 from paralleldomain import AnyPath
 
-from colmap_database import (
+from loftr.utils.colmap_database import (
     COLMAPDatabase, array_to_blob, blob_to_array, image_ids_to_pair_id, pair_id_to_image_ids
 )
 from loftr.utils.plotting import make_matching_figure
