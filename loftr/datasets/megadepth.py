@@ -5,7 +5,7 @@ import torch.nn.functional as F
 from torch.utils.data import Dataset
 from loguru import logger
 
-from src.utils.dataset import read_megadepth_gray, read_megadepth_depth
+from loftr.utils.dataset import read_megadepth_gray, read_megadepth_depth
 
 
 class MegaDepthDataset(Dataset):

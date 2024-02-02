@@ -6,7 +6,7 @@ import numpy as np
 import torch
 import torch.utils as utils
 from numpy.linalg import inv
-from src.utils.dataset import (
+from loftr.utils.dataset import (
     read_scannet_gray,
     read_scannet_depth,
     read_scannet_pose,

@@ -68,7 +68,7 @@ If you want to run LoFTR-OT, some extra steps are needed:
   We use the code from [SuperGluePretrainedNetwork](https://github.com/magicleap/SuperGluePretrainedNetwork) for optimal transport. However, we can't provide the code directly due its strict LICENSE requirements. We recommend downloading it with the following command instead. 
 
   ```shell
-  cd src/loftr/utils  
+  cd loftr/loftr/utils  
   wget https://raw.githubusercontent.com/magicleap/SuperGluePretrainedNetwork/master/models/superglue.py 
   ```
 </details>
@@ -82,7 +82,7 @@ If you want to run LoFTR-OT, some extra steps are needed:
   <summary>[code snippets]</summary>
 
   ```python
-  from src.loftr import LoFTR, default_cfg
+  from loftr.loftr import LoFTR, default_cfg
 
   # Initialize LoFTR
   matcher = LoFTR(config=default_cfg)

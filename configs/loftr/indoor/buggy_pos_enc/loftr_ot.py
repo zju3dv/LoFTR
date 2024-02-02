@@ -1,4 +1,4 @@
-from src.config.default import _CN as cfg
+from loftr.config.default import _CN as cfg
 
 cfg.LOFTR.COARSE.TEMP_BUG_FIX = False
 cfg.LOFTR.MATCH_COARSE.MATCH_TYPE = 'sinkhorn'

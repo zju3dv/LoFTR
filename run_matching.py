@@ -15,8 +15,8 @@ from paralleldomain import AnyPath
 from colmap_database import (
     COLMAPDatabase, array_to_blob, blob_to_array, image_ids_to_pair_id, pair_id_to_image_ids
 )
-from src.utils.plotting import make_matching_figure
-from src.loftr import LoFTR, default_cfg
+from loftr.utils.plotting import make_matching_figure
+from loftr.loftr import LoFTR, default_cfg
 
 # os.chdir("..")
 
