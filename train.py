@@ -11,11 +11,11 @@ from pytorch_lightning.loggers import TensorBoardLogger
 from pytorch_lightning.callbacks import ModelCheckpoint, LearningRateMonitor
 from pytorch_lightning.plugins import DDPPlugin
 
-from src.config.default import get_cfg_defaults
-from src.utils.misc import get_rank_zero_only_logger, setup_gpus
-from src.utils.profiler import build_profiler
-from src.lightning.data import MultiSceneDataModule
-from src.lightning.lightning_loftr import PL_LoFTR
+from loftr.config.default import get_cfg_defaults
+from loftr.utils.misc import get_rank_zero_only_logger, setup_gpus
+from loftr.utils.profiler import build_profiler
+from loftr.lightning.data import MultiSceneDataModule
+from loftr.lightning.lightning_loftr import PL_LoFTR
 
 loguru_logger = get_rank_zero_only_logger(loguru_logger)
 

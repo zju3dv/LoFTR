@@ -16,8 +16,8 @@ import numpy as np
 import matplotlib.cm as cm
 
 os.sys.path.append("../")  # Add the project directory
-from src.loftr import LoFTR, default_cfg
-from src.config.default import get_cfg_defaults
+from loftr.loftr import LoFTR, default_cfg
+from loftr.config.default import get_cfg_defaults
 try:
     from demo.utils import (AverageTimer, VideoStreamer,
                             make_matching_plot_fast, make_matching_plot, frame2tensor)

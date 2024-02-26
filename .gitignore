@@ -12,7 +12,7 @@ weights/
 dump/
 demo/*.mp4
 demo/demo_images/
-src/loftr/utils/superglue.py
+loftr/loftr/utils/superglue.py
 demo/utils.py
 
 notebooks/QccDayNight.ipynb
@@ -24,4 +24,4 @@ tools/draw_QccDayNights.py
 
 scripts/slurm/
 scripts/sbatch_submit.sh
-src/utils/client.py
+loftr/utils/client.py
