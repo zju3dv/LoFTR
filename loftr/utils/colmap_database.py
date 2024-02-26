@@ -265,7 +265,7 @@ class COLMAPDatabase(sqlite3.Connection):
         assert len(confidences.shape) == 1
 
         if image_id1 > image_id2:
-            confidences = confidences[:, ::-1]
+            confidences = confidences[::-1]
 
         pair_id = image_ids_to_pair_id(image_id1, image_id2)
         confidences = np.asarray(confidences*100, np.uint32)
